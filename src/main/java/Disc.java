@@ -1,7 +1,7 @@
-public class Disc {
+class Disc {
     private final int discNumber;
 
-    public Disc(int discNumber) {
+    Disc(int discNumber) {
         this.discNumber = discNumber;
     }
 

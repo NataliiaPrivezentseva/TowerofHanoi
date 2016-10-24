@@ -1,22 +1,25 @@
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Peg {
+class Peg {
     private final Deque<Disc> peg;
 
-    public Peg() {
+    Peg() {
         peg = new LinkedList<>();
     }
 
-    public void putDisc(Disc disc) {
+    void putDisc(Disc disc) {
         peg.addFirst(disc);
     }
 
-    public Disc takeDisc() {
+    Disc takeDisc() {
+        if (peg.isEmpty()) {
+            throw new NullPointerException();
+        }
         return peg.removeFirst();
     }
 
-    public void printPegState() {
+    void printPegState() {
         if (peg.isEmpty()) {
             System.out.println(" don't contains any discs");
         } else {

@@ -18,6 +18,9 @@ public class Towers {
     }
 
     private static void moveTower(List<Peg> threePegs, int towerHeight, Peg from, Peg to, Peg tmp) {
+        if (from.equals(to) || from.equals(tmp)) {
+            throw new IllegalArgumentException();
+        }
         if (towerHeight == 1) {
             moveDisk(from, to);
             printTowerState(threePegs);
@@ -30,6 +33,9 @@ public class Towers {
     }
 
     private static void moveDisk(Peg from, Peg to) {
+        if (from.equals(to)) {
+            throw new IllegalArgumentException();
+        }
         Disc disc = from.takeDisc();
         to.putDisc(disc);
     }
@@ -43,6 +49,9 @@ public class Towers {
     }
 
     private static void createTower(List<Peg> threePegs, int towerHeight) {
+        if (towerHeight <= 0) {
+            throw new IllegalArgumentException();
+        }
         for (int i = towerHeight; i > 0; i--) {
             threePegs.get(0).putDisc(new Disc(i));
         }
