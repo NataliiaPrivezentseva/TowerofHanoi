@@ -5,6 +5,10 @@ class Disc {
         this.discNumber = discNumber;
     }
 
+    public int getDiscNumber() {
+        return discNumber;
+    }
+
     @Override
     public String toString() {
         return "Disc #" + discNumber;

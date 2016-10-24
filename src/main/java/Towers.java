@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Towers {
 
     public static void main(String[] args) {
+        // TODO: 24.10.2016 Add input validation
         int towerHeight;
         System.out.println("Please, enter the height of the tower");
         Scanner input = new Scanner(System.in);
@@ -19,7 +20,7 @@ public class Towers {
 
     private static void moveTower(List<Peg> threePegs, int towerHeight, Peg from, Peg to, Peg tmp) {
         if (from.equals(to) || from.equals(tmp)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("You can't move a tower to the peg, where it is");
         }
         if (towerHeight == 1) {
             moveDisk(from, to);
@@ -34,7 +35,7 @@ public class Towers {
 
     private static void moveDisk(Peg from, Peg to) {
         if (from.equals(to)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("You can't move a disc to the peg, where it is");
         }
         Disc disc = from.takeDisc();
         to.putDisc(disc);
@@ -50,7 +51,7 @@ public class Towers {
 
     private static void createTower(List<Peg> threePegs, int towerHeight) {
         if (towerHeight <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("You can't create a tower with negative number of discs or without any discs");
         }
         for (int i = towerHeight; i > 0; i--) {
             threePegs.get(0).putDisc(new Disc(i));
