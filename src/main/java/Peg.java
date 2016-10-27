@@ -12,8 +12,6 @@ class Peg {
     void putDisc(Disc disc) {
         if (disc == null) {
             throw new NullPointerException("You haven't any discs for putting");
-        } else if (disc.getDiscNumber() > peg.getFirst().getDiscNumber()) {
-            throw new IllegalStateException("You can't put a disc with bigger discNumber on the disc with smaller discNumber");
         }
         peg.addFirst(disc);
     }
@@ -23,6 +21,13 @@ class Peg {
             throw new NoSuchElementException("You can't take a disk from an empty peg");
         }
         return peg.removeFirst();
+    }
+
+    Disc retrieveDisc() {
+        if (peg.isEmpty()) {
+            throw new NoSuchElementException("You can't look at a disk if the peg is empty");
+        }
+        return peg.getFirst();
     }
 
     void printPegState() {
