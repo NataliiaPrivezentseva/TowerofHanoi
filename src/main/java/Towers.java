@@ -6,17 +6,29 @@ import java.util.Scanner;
 public class Towers {
 
     public static void main(String[] args) {
-        // TODO: 24.10.2016 Add input validation
-        int towerHeight;
-        System.out.println("Please, enter the height of the tower");
-        Scanner input = new Scanner(System.in);
-        towerHeight = input.nextInt();
-
+        int towerHeight = getTowerHeight();
         List<Peg> threePegs = createThreePegs();
         createTower(threePegs, towerHeight);
         printTowerState(threePegs);
-
         moveTower(threePegs, towerHeight, threePegs.get(0), threePegs.get(2), threePegs.get(1));
+    }
+
+    private static int getTowerHeight(){
+        int towerHeight;
+        Scanner input = new Scanner(System.in);
+        do {
+            System.out.println("Please, enter the height of the tower. It must be positive integer");
+
+            while (!input.hasNextInt()) {
+                String usersInput = input.next();
+                System.out.println(usersInput + " — improper value of the height of the tower. " +
+                        "Please, enter the proper height of the tower");
+            }
+            towerHeight = input.nextInt();
+
+        } while (towerHeight <= 0);
+
+        return towerHeight;
     }
 
     private static void moveTower(List<Peg> threePegs, int towerHeight, Peg from, Peg to, Peg tmp) {
