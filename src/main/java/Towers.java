@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Towers {
@@ -36,31 +35,23 @@ public class Towers {
             throw new IllegalArgumentException("You can't move a tower to the peg, where it is");
         }
         if (towerHeight == 1) {
-            moveDisk(from, to);
+            moveDisc(from, to);
             printTowerState(threePegs);
         } else {
             moveTower(threePegs, towerHeight - 1, from, tmp, to);
-            moveDisk(from, to);
+            moveDisc(from, to);
             printTowerState(threePegs);
             moveTower(threePegs, towerHeight - 1, tmp, to, from);
         }
     }
 
-    private static void moveDisk(Peg from, Peg to) {
+    private static void moveDisc(Peg from, Peg to) {
         if (from.equals(to)) {
             throw new IllegalArgumentException("You can't move a disc to the peg, where it is");
         }
 
         Disc disc = from.takeDisc();
-        try {
-            if (disc.getDiscNumber() > to.retrieveDisc().getDiscNumber()) {
-                throw new IllegalStateException("You can't put a disc with bigger discNumber " +
-                        "on the disc with smaller discNumber");
-            }
-        } catch (NoSuchElementException e) {
-        } finally {
-            to.putDisc(disc);
-        }
+        to.putDisc(disc);
     }
 
     private static void printTowerState(List<Peg> threePegs) {
