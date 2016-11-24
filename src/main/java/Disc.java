@@ -2,7 +2,11 @@ class Disc {
     private final int discNumber;
 
     Disc(int discNumber) {
-        this.discNumber = discNumber;
+        if (discNumber <= 0) {
+            throw new IllegalArgumentException("Disc number can't be zero or negative integer");
+        } else {
+            this.discNumber = discNumber;
+        }
     }
 
     int getDiscNumber() {
