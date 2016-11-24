@@ -11,7 +11,7 @@ class Peg {
 
     void putDisc(Disc disc) {
         if (disc == null) {
-            throw new NullPointerException("You haven't any peg for putting");
+            throw new NullPointerException("You haven't any discs for putting");
         }
 
         if (!peg.isEmpty() && peg.getFirst().getDiscNumber() <= disc.getDiscNumber()) {
@@ -32,9 +32,9 @@ class Peg {
 
     void printPegState() {
         if (peg.isEmpty()) {
-            System.out.println(" don't contains any peg");
+            System.out.println(" don't contains any discs");
         } else {
-            System.out.println(" contains following peg: " + peg);
+            System.out.println(" contains following discs: " + peg);
         }
     }
 }
