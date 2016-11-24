@@ -5,7 +5,7 @@ class Disc {
         this.discNumber = discNumber;
     }
 
-    public int getDiscNumber() {
+    int getDiscNumber() {
         return discNumber;
     }
 
