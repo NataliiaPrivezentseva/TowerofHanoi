@@ -15,7 +15,7 @@ public class PegTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void testThrowingNoSuchElementExceptionIfNoDiscsForTaking() {
+    public void testThrowingExceptionIfNoDiscsForTaking() {
         peg.takeDisc();
     }
 
@@ -35,12 +35,12 @@ public class PegTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void testThrowingNullPointerExceptionIfNoDiscsForPutting() {
+    public void testThrowingExceptionIfNoDiscsForPutting() {
         peg.putDisc(null);
     }
 
     @Test(expected = IllegalStateException.class)
-    public void testThrowingIllegalStateExceptionIfPuttingWrongDiscNumber() {
+    public void testThrowingExceptionIfPuttingWrongDiscNumber() {
         Disc discOne = new Disc(1);
         Disc discTwo = new Disc(2);
         peg.putDisc(discOne);
